@@ -3,7 +3,7 @@
 %{!?python2_shortver: %global python2_shortver %(%{__python2} -c 'import sys; print(str(sys.version_info.major) + "." + str(sys.version_info.minor))')}
 
 %if 0%{?fedora} >= 24
-%global with_python3 1
+%global with_python3 0
 %{!?python3_shortver: %global python3_shortver %(%{__python3} -c 'import sys; print(str(sys.version_info.major) + "." + str(sys.version_info.minor))')}
 %endif
 
@@ -11,7 +11,7 @@
 
 Name:           python-%{pypi_name}
 Version:        1.2.3
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Client for OpenStack Congress (Open Policy Framework)
 
 License:        ASL 2.0
@@ -215,6 +215,9 @@ rm -rf .testrepository
 
 
 %changelog
+* Wed Apr 20 2016 Haïkel Guémar <hguemar@fedoraproject.org> - 1.2.3-2
+- FTBFS when python3 build is enabled
+
 * Wed Apr 20 2016 Haikel Guemar <hguemar@fedoraproject.org> 1.2.3-1
 - Update to 1.2.3
 
