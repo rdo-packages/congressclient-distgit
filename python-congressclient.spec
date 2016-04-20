@@ -2,15 +2,15 @@
 
 %{!?python2_shortver: %global python2_shortver %(%{__python2} -c 'import sys; print(str(sys.version_info.major) + "." + str(sys.version_info.minor))')}
 
-%if 0%{?fedora}
-%global with_python3 0
+%if 0%{?fedora} >= 24
+%global with_python3 1
 %{!?python3_shortver: %global python3_shortver %(%{__python3} -c 'import sys; print(str(sys.version_info.major) + "." + str(sys.version_info.minor))')}
 %endif
 
 %{!?upstream_version: %global upstream_version %{version}%{?milestone}}
 
 Name:           python-%{pypi_name}
-Version:        1.2.1
+Version:        1.2.3
 Release:        1%{?dist}
 Summary:        Client for OpenStack Congress (Open Policy Framework)
 
@@ -215,5 +215,8 @@ rm -rf .testrepository
 
 
 %changelog
+* Wed Apr 20 2016 Haikel Guemar <hguemar@fedoraproject.org> 1.2.3-1
+- Update to 1.2.3
+
 * Fri Jan 22 2016 Marcos Fermin Lobo <marcos.fermin.lobo@cern.ch> 1.2.1
 - First RPM
