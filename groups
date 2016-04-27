@@ -2,4 +2,5 @@
 False 	Non-Interactive Users
 04538c2a599baa2f59d04aa6e3ff2c3d9d66ae50       	openstack/congressclient-distgit-core
 bcf03334188a2f9d532cb37b878d33408432840a        	openstack/congressclient-distgit-ptl
+63673ea7f2ae6a5666566b1ea9f14e473d00f5a9	rdo-core
 global:Registered-Users		Registered Users
