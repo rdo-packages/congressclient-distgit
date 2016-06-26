@@ -1,10 +1,7 @@
 %global pypi_name congressclient
 
-%{!?python2_shortver: %global python2_shortver %(%{__python2} -c 'import sys; print(str(sys.version_info.major) + "." + str(sys.version_info.minor))')}
-
 %if 0%{?fedora} >= 24
-%global with_python3 0
-%{!?python3_shortver: %global python3_shortver %(%{__python3} -c 'import sys; print(str(sys.version_info.major) + "." + str(sys.version_info.minor))')}
+%global with_python3 1
 %endif
 
 %{!?upstream_version: %global upstream_version %{version}%{?milestone}}
@@ -27,13 +24,20 @@ Client for OpenStack Congress (Open Policy Framework)
 
 BuildRequires:  python2-devel
 BuildRequires:  python-setuptools
-BuildRequires:  python-pbr
+BuildRequires:  python-pbr >= 1.6
+BuildRequires:  python-cliff
+BuildRequires:  python-keystoneclient
+BuildRequires:  python-mock
+BuildRequires:  python-oslo-log
 
 Requires:       python-babel >= 1.3
-Requires:       python-cliff >= 1.14
+Requires:       python-cliff >= 1.15.0
 Requires:       python-keystoneclient >= 1.6.0
-Requires:       python-oslo-i18n >= 1.5
-Requires:       python-pbr
+Requires:       python-oslo-i18n >= 2.1.0
+Requires:       python-oslo-log >= 1.14.0
+Requires:       python-oslo-serialization >= 1.10.0
+Requires:       python-oslo-utils >= 1.14.0
+Requires:       python-pbr > 1.6
 Requires:       python-requests >= 2.5.2
 Requires:       python-six >= 1.9.0
 
@@ -51,14 +55,20 @@ Summary:        Client for OpenStack Congress (Open Policy Framework)
 
 BuildRequires:  python3-devel
 BuildRequires:  python3-setuptools
-BuildRequires:  python3-pbr >= 0.6
-BuildRequires:  python-tools
+BuildRequires:  python3-pbr >= 1.6
+BuildRequires:  python3-cliff
+BuildRequires:  python3-keystoneclient
+BuildRequires:  python3-mock
+BuildRequires:  python3-oslo-log
 
 Requires:       python3-babel >= 1.3
-Requires:       python3-cliff >= 1.14
+Requires:       python3-cliff >= 1.15.0
 Requires:       python3-keystoneclient >= 1.6.0
-Requires:       python3-oslo-i18n >= 1.5
-Requires:       python3-pbr
+Requires:       python3-oslo-i18n >= 2.1.0
+Requires:       python3-oslo-log >= 1.14.0
+Requires:       python3-oslo-serialization >= 1.10.0
+Requires:       python3-oslo-utils >= 1.14.0
+Requires:       python3-pbr >= 1.6
 Requires:       python3-requests >= 2.5.2
 Requires:       python3-six >= 1.9.0
 
@@ -126,20 +136,12 @@ rm -rf %{pypi_name}.egg-info
 # Let RPM handle the dependencies
 rm -f test-requirements.txt requirements.txt
 
-%if 0%{?with_python3}
-rm -rf %{py3dir}
-cp -a . %{py3dir}
-2to3 --write --nobackups %{py3dir}
-%endif
-
 
 %build
 %{__python2} setup.py build
 
 %if 0%{?with_python3}
-pushd %{py3dir}
 LANG=en_US.UTF-8 %{__python3} setup.py build
-popd
 %endif
 
 # generate html docs 
@@ -150,27 +152,10 @@ rm -rf html/.{doctrees,buildinfo}
 
 %install
 %if 0%{?with_python3}
-pushd %{py3dir}
-LANG=en_US.UTF-8 %{__python3} setup.py install --skip-build --root %{buildroot}
-mv %{buildroot}%{_bindir}/%{pypi_name} %{buildroot}%{_bindir}/python3-%{pypi_name}
-popd
+LANG=en_US.UTF-8 %py3_install
 %endif
 
-%{__python2} setup.py install --skip-build --root %{buildroot}
-
-# rename binaries, make compat symlinks
-install -m 755 -d %{buildroot}/%{_bindir}
-pushd %{buildroot}%{_bindir}
-ln -s %{pypi_name} %{pypi_name}
-for i in %{pypi_name}-{2,%{?python2_shortver}}; do
-    ln -s %{pypi_name} $i
-done
-%if 0%{?with_python3}
-for i in %{pypi_name}-{3,%{?python3_shortver}}; do
-    ln -s  python3-%{pypi_name} $i
-done
-%endif
-popd
+%py2_install
 
 
 %check
@@ -186,7 +171,6 @@ rm -rf .testrepository
 %doc README.rst
 %{python2_sitelib}/%{pypi_name}
 %{python2_sitelib}/python_%{pypi_name}-*-py?.?.egg-info 
-%{_bindir}/%{pypi_name}*
 %exclude %{python2_sitelib}/%{pypi_name}/tests
 
 # Files for python3
@@ -194,8 +178,6 @@ rm -rf .testrepository
 %files -n python3-%{pypi_name} 
 %license LICENSE
 %doc README.rst
-%{_bindir}/python3-%{pypi_name}
-%{_bindir}/%{pypi_name}*
 %{python3_sitelib}/%{pypi_name}
 %{python3_sitelib}/python_%{pypi_name}-%{version}-py?.?.egg-info
 %exclude %{python3_sitelib}/%{pypi_name}/tests
