@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa2559ec_2d2bd9ec",
+        "filename": "python-congressclient.spec",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 113
+      },
+      "writtenOn": "2016-06-27T15:49:51Z",
+      "side": 1,
+      "message": "Why do we have a different minimum version in python3?\n\nAlso, the latest python-requests version in PyPi seems to be 2.10",
+      "range": {
+        "startLine": 72,
+        "startChar": 14,
+        "endLine": 72,
+        "endChar": 41
+      },
+      "revId": "c6630187831f9bba408772597ff96b51c0167711",
+      "serverId": "270e2033-b340-4cff-9539-693957ebf0e7",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa2559ec_cdee7db4",
+        "filename": "python-congressclient.spec",
+        "patchSetId": 1
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 113
+      },
+      "writtenOn": "2016-06-27T15:49:51Z",
+      "side": 1,
+      "message": "We need %{python3_sitelib}/python_%{pypi_name}-*-py?.?.egg-info here, just like the python2 file, to avoid the glob issue when building in DLRN.",
+      "range": {
+        "startLine": 182,
+        "startChar": 0,
+        "endLine": 182,
+        "endChar": 64
+      },
+      "revId": "c6630187831f9bba408772597ff96b51c0167711",
+      "serverId": "270e2033-b340-4cff-9539-693957ebf0e7",
+      "unresolved": false
+    }
+  ]
+}
