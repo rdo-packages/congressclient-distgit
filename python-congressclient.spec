@@ -179,7 +179,7 @@ rm -rf .testrepository
 %license LICENSE
 %doc README.rst
 %{python3_sitelib}/%{pypi_name}
-%{python3_sitelib}/python_%{pypi_name}-%{version}-py?.?.egg-info
+%{python3_sitelib}/python_%{pypi_name}-*-py?.?.egg-info
 %exclude %{python3_sitelib}/%{pypi_name}/tests
 %endif
 
