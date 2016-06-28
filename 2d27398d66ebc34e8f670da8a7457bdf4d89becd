@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa2559ec_cda67d53",
+        "filename": "python-congressclient.spec",
+        "patchSetId": 2
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 113
+      },
+      "writtenOn": "2016-06-28T10:14:12Z",
+      "side": 1,
+      "message": "This is still going to fail when building the py3 subpackage. We need to change %{version} to *",
+      "range": {
+        "startLine": 182,
+        "startChar": 3,
+        "endLine": 182,
+        "endChar": 64
+      },
+      "revId": "2d27398d66ebc34e8f670da8a7457bdf4d89becd",
+      "serverId": "270e2033-b340-4cff-9539-693957ebf0e7",
+      "unresolved": false
+    }
+  ]
+}
