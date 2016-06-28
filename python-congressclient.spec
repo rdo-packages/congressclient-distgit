@@ -8,7 +8,7 @@
 
 Name:           python-%{pypi_name}
 Version:        1.2.3
-Release:        3%{?dist}
+Release:        4%{?dist}
 Summary:        Client for OpenStack Congress (Open Policy Framework)
 
 License:        ASL 2.0
@@ -69,7 +69,7 @@ Requires:       python3-oslo-log >= 1.14.0
 Requires:       python3-oslo-serialization >= 1.10.0
 Requires:       python3-oslo-utils >= 1.14.0
 Requires:       python3-pbr >= 1.6
-Requires:       python3-requests >= 3.5.0
+Requires:       python3-requests >= 2.5.2
 Requires:       python3-six >= 1.9.0
 
 %description -n python3-%{pypi_name}
@@ -197,6 +197,9 @@ rm -rf .testrepository
 
 
 %changelog
+* Tue Jun 28 2016 Haïkel Guémar <hguemar@fedoraproject.org> - 1.2.3-4
+- Fix min version in requirements for python3 subpackage
+
 * Sun Jun 26 2016 Haïkel Guémar <hguemar@fedoraproject.org> - 1.2.3-3
 - Fix python3 subpackage
 
