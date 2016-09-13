@@ -7,8 +7,8 @@
 %{!?upstream_version: %global upstream_version %{version}%{?milestone}}
 
 Name:           python-%{pypi_name}
-Version:        XXX
-Release:        XXX
+Version:        1.5.0
+Release:        1%{?dist}
 Summary:        Client for OpenStack Congress (Open Policy Framework)
 
 License:        ASL 2.0
@@ -197,3 +197,6 @@ rm -rf .testrepository
 
 
 %changelog
+* Tue Sep 13 2016 Haikel Guemar <hguemar@fedoraproject.org> 1.5.0-1
+- Update to 1.5.0
+
