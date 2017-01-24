@@ -197,3 +197,4 @@ rm -rf .testrepository
 
 
 %changelog
+# REMOVEME: error caused by commit http://git.openstack.org/cgit/openstack/python-congressclient/commit/?id=ab2eea35d535b4cb136f3c410d4b1f6280100ebb
