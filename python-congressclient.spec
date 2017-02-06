@@ -31,13 +31,13 @@ BuildRequires:  python-mock
 BuildRequires:  python-oslo-log
 
 Requires:       python-babel >= 2.3.4
-Requires:       python-cliff >= 1.15.0
-Requires:       python-keystoneauth1 >= 2.10.0
+Requires:       python-cliff >= 2.3.0
+Requires:       python-keystoneauth1 >= 2.18.0
 Requires:       python-oslo-i18n >= 2.1.0
-Requires:       python-oslo-log >= 1.14.0
+Requires:       python-oslo-log >= 3.11.0
 Requires:       python-oslo-serialization >= 1.10.0
 Requires:       python-oslo-utils >= 3.16.0
-Requires:       python-pbr >= 1.6
+Requires:       python-pbr >= 1.8
 Requires:       python-requests >= 2.5.2
 Requires:       python-six >= 1.9.0
 
@@ -62,13 +62,13 @@ BuildRequires:  python3-mock
 BuildRequires:  python3-oslo-log
 
 Requires:       python3-babel >= 2.3.4
-Requires:       python3-cliff >= 1.15.0
-Requires:       python3-keystoneauth1 >= 2.10.0
+Requires:       python3-cliff >= 2.3.0
+Requires:       python3-keystoneauth1 >= 2.18.0
 Requires:       python3-oslo-i18n >= 2.1.0
-Requires:       python3-oslo-log >= 1.14.0
+Requires:       python3-oslo-log >= 3.11.0
 Requires:       python3-oslo-serialization >= 1.10.0
 Requires:       python3-oslo-utils >= 3.16.0
-Requires:       python3-pbr >= 1.6
+Requires:       python3-pbr >= 1.8
 Requires:       python3-requests >= 2.5.2
 Requires:       python3-six >= 1.9.0
 
