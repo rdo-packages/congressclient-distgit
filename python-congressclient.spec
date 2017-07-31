@@ -22,6 +22,7 @@ Client for OpenStack Congress (Open Policy Framework)
 
 %package -n     python2-%{pypi_name}
 
+BuildRequires:  git
 BuildRequires:  python2-devel
 BuildRequires:  python-setuptools
 BuildRequires:  python-pbr >= 1.6
@@ -81,7 +82,7 @@ Client for OpenStack Congress (Open Policy Framework)
 Summary:        Documentation for OpenStack Congress Client
 
 BuildRequires: python-sphinx
-BuildRequires: python-oslo-sphinx >= 2.3.0
+BuildRequires: python-openstackdocstheme
 
 %description -n python-%{pypi_name}-doc
 Documentation for the client library for interacting with Openstack
@@ -99,8 +100,6 @@ Requires:       python-mock
 Requires:       python-testrepository >= 0.0.18
 Requires:       python-testscenarios >= 0.4
 Requires:       python-testtools
-Requires:       python-oslo-sphinx >= 2.5.0
-Requires:       python-sphinx
 Requires:       python-subunit >= 0.0.18
 Requires:       python-webob >= 1.2.3
 
@@ -119,8 +118,6 @@ Requires:       python3-mock
 Requires:       python3-testrepository >= 0.0.18
 Requires:       python3-testscenarios >= 0.4
 Requires:       python3-testtools
-Requires:       python3-oslo-sphinx >= 2.5.0
-Requires:       python3-sphinx
 Requires:       python3-subunit >= 0.0.18
 Requires:       python3-webob >= 1.2.3
 
@@ -130,7 +127,7 @@ Test suite for OpenStack Congress (Open Policy Framework) client.
 
 
 %prep
-%autosetup -n %{name}-%{upstream_version}
+%autosetup -n %{name}-%{upstream_version} -S git
 # Remove bundled egg-info
 rm -rf %{pypi_name}.egg-info
 # Let RPM handle the dependencies
@@ -145,9 +142,9 @@ LANG=en_US.UTF-8 %{__python3} setup.py build
 %endif
 
 # generate html docs 
-sphinx-build doc/source html
+%{__python2} setup.py build_sphinx -b html
 # remove the sphinx-build leftovers
-rm -rf html/.{doctrees,buildinfo}
+rm -rf doc/build/html/.{doctrees,buildinfo}
 
 
 %install
@@ -184,7 +181,7 @@ rm -rf .testrepository
 %endif
 
 %files -n python-%{pypi_name}-doc
-%doc html
+%doc doc/build/html
 %license LICENSE
 
 %files -n python2-%{pypi_name}-tests
@@ -197,3 +194,4 @@ rm -rf .testrepository
 
 
 %changelog
+# REMOVEME: error caused by commit http://git.openstack.org/cgit/openstack/python-congressclient/commit/?id=91b58c72c1c3b57a8904452aa6074e94b3526538
