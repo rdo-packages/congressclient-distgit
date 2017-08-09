@@ -16,6 +16,24 @@
       "revId": "658d9efaf5c8ce8ffb0d2a595fba41dbabfe0a14",
       "serverId": "270e2033-b340-4cff-9539-693957ebf0e7",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a890539_2c9566e4",
+        "filename": "python-congressclient.spec",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 128
+      },
+      "writtenOn": "2017-08-09T09:03:45Z",
+      "side": 0,
+      "message": "That commit is not stable/pike head, requests is not in https://github.com/openstack/python-congressclient/blob/stable/pike/requirements.txt . it was removed in pike cycle in https://review.openstack.org/#/c/424543/",
+      "parentUuid": "5a890539_0cc18a2e",
+      "revId": "658d9efaf5c8ce8ffb0d2a595fba41dbabfe0a14",
+      "serverId": "270e2033-b340-4cff-9539-693957ebf0e7",
+      "unresolved": false
     }
   ]
 }
