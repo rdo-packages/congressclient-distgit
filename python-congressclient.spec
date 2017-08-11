@@ -90,7 +90,6 @@ Congress API.
 Summary:  congressclient test subpackage
 
 Requires:       python2-%{pypi_name} = %{version}-%{release}
-Requires:       python-coverage >= 3.6
 Requires:       python-fixtures >= 1.3.1
 Requires:       python-mock
 Requires:       python-testrepository >= 0.0.18
@@ -108,7 +107,6 @@ Test suite for OpenStack Congress (Open Policy Framework) client.
 Summary:  congressclient test subpackage
 
 Requires:       python3-%{pypi_name} = %{version}-%{release}
-Requires:       python3-coverage >= 3.6
 Requires:       python3-fixtures >= 1.3.1
 Requires:       python3-mock
 Requires:       python3-testrepository >= 0.0.18
