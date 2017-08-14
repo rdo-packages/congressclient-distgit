@@ -7,8 +7,8 @@
 %{!?upstream_version: %global upstream_version %{version}%{?milestone}}
 
 Name:           python-%{pypi_name}
-Version:        XXX
-Release:        XXX
+Version:        1.8.0
+Release:        1%{?dist}
 Summary:        Client for OpenStack Congress (Open Policy Framework)
 
 License:        ASL 2.0
@@ -190,4 +190,7 @@ rm -rf .testrepository
 
 
 %changelog
+* Mon Aug 14 2017 Alfredo Moralejo <amoralej@redhat.com> 1.8.0-1
+- Update to 1.8.0
+
 # REMOVEME: error caused by commit http://git.openstack.org/cgit/openstack/python-congressclient/commit/?id=91b58c72c1c3b57a8904452aa6074e94b3526538
