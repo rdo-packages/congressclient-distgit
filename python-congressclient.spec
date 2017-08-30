@@ -131,17 +131,11 @@ rm -f test-requirements.txt requirements.txt
 
 
 %build
-%{__python2} setup.py build
+%py2_build
 
 %if 0%{?with_python3}
 LANG=en_US.UTF-8 %{__python3} setup.py build
 %endif
-
-# generate html docs 
-%{__python2} setup.py build_sphinx -b html
-# remove the sphinx-build leftovers
-rm -rf doc/build/html/.{doctrees,buildinfo}
-
 
 %install
 %if 0%{?with_python3}
@@ -150,6 +144,10 @@ LANG=en_US.UTF-8 %py3_install
 
 %py2_install
 
+# generate html docs
+%{__python2} setup.py build_sphinx -b html
+# remove the sphinx-build leftovers
+rm -rf doc/build/html/.{doctrees,buildinfo}
 
 %check
 %if 0%{?with_python3}
@@ -190,4 +188,3 @@ rm -rf .testrepository
 
 
 %changelog
-# REMOVEME: error caused by commit http://git.openstack.org/cgit/openstack/python-congressclient/commit/?id=91b58c72c1c3b57a8904452aa6074e94b3526538
