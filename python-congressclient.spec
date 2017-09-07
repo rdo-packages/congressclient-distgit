@@ -6,6 +6,9 @@
 
 %{!?upstream_version: %global upstream_version %{version}%{?milestone}}
 
+%global common_desc \
+Client for OpenStack Congress (Open Policy Framework)
+
 Name:           python-%{pypi_name}
 Version:        XXX
 Release:        XXX
@@ -18,7 +21,7 @@ Source0:        https://tarballs.openstack.org/%{name}/%{name}-%{version}.tar.gz
 BuildArch:      noarch
 
 %description
-Client for OpenStack Congress (Open Policy Framework)
+%{common_desc}
 
 %package -n     python2-%{pypi_name}
 
@@ -44,7 +47,7 @@ Summary:        Client for OpenStack Congress (Open Policy Framework)
 %{?python_provide:%python_provide python2-%{pypi_name}}
 
 %description -n python2-%{pypi_name}
-Client for OpenStack Congress (Open Policy Framework)
+%{common_desc}
 
 # Python3 package
 %if 0%{?with_python3}
@@ -70,7 +73,7 @@ Requires:       python3-pbr >= 2.0.0
 Requires:       python3-six >= 1.9.0
 
 %description -n python3-%{pypi_name}
-Client for OpenStack Congress (Open Policy Framework)
+%{common_desc}
 %endif
 
 # Documentation package
