@@ -62,6 +62,7 @@ BuildRequires:  python3-cliff
 BuildRequires:  python3-keystoneauth1
 BuildRequires:  python3-mock
 BuildRequires:  python3-oslo-log
+BuildRequires:  openstack-macros
 
 Requires:       python3-babel >= 2.3.4
 Requires:       python3-cliff >= 2.8.0
@@ -128,7 +129,7 @@ Test suite for OpenStack Congress (Open Policy Framework) client.
 # Remove bundled egg-info
 rm -rf %{pypi_name}.egg-info
 # Let RPM handle the dependencies
-rm -f test-requirements.txt requirements.txt
+%py_req_cleanup
 
 
 %build
