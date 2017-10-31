@@ -134,16 +134,14 @@ rm -rf %{pypi_name}.egg-info
 
 %build
 %py2_build
-
 %if 0%{?with_python3}
-LANG=en_US.UTF-8 %{__python3} setup.py build
+%py3_build
 %endif
 
 %install
 %if 0%{?with_python3}
-LANG=en_US.UTF-8 %py3_install
+%py3_install
 %endif
-
 %py2_install
 
 # generate html docs
