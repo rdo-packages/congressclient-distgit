@@ -20,12 +20,14 @@ Source0:        https://tarballs.openstack.org/%{name}/%{name}-%{version}.tar.gz
 
 BuildArch:      noarch
 
+BuildRequires:  git
+BuildRequires:  openstack-macros
+
 %description
 %{common_desc}
 
 %package -n     python2-%{pypi_name}
 
-BuildRequires:  git
 BuildRequires:  python2-devel
 BuildRequires:  python-setuptools
 BuildRequires:  python-pbr >= 2.0.0
@@ -62,7 +64,6 @@ BuildRequires:  python3-cliff
 BuildRequires:  python3-keystoneauth1
 BuildRequires:  python3-mock
 BuildRequires:  python3-oslo-log
-BuildRequires:  openstack-macros
 
 Requires:       python3-babel >= 2.3.4
 Requires:       python3-cliff >= 2.8.0
