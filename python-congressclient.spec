@@ -29,21 +29,29 @@ BuildRequires:  openstack-macros
 %package -n     python2-%{pypi_name}
 
 BuildRequires:  python2-devel
-BuildRequires:  python-setuptools
-BuildRequires:  python-pbr >= 2.0.0
+BuildRequires:  python2-setuptools
+BuildRequires:  python2-pbr >= 2.0.0
+BuildRequires:  python2-keystoneauth1
+BuildRequires:  python2-mock
+BuildRequires:  python2-oslo-log
+%if 0%{?fedora} > 0
+BuildRequires:  python2-cliff
+%else
 BuildRequires:  python-cliff
-BuildRequires:  python-keystoneauth1
-BuildRequires:  python-mock
-BuildRequires:  python-oslo-log
+%endif
 
-Requires:       python-babel >= 2.3.4
+Requires:       python2-babel >= 2.3.4
+Requires:       python2-keystoneauth1 >= 3.3.0
+Requires:       python2-oslo-i18n >= 3.15.3
+Requires:       python2-oslo-log >= 3.36.0
+Requires:       python2-oslo-serialization >= 2.18.0
+Requires:       python2-pbr >= 2.0.0
+Requires:       python2-six >= 1.10.0
+%if 0%{?fedora} > 0
+Requires:       python2-cliff >= 2.8.0
+%else
 Requires:       python-cliff >= 2.8.0
-Requires:       python-keystoneauth1 >= 3.1.0
-Requires:       python-oslo-i18n >= 2.1.0
-Requires:       python-oslo-log >= 3.22.0
-Requires:       python-oslo-serialization >= 1.10.0
-Requires:       python-pbr >= 2.0.0
-Requires:       python-six >= 1.9.0
+%endif
 
 Summary:        Client for OpenStack Congress (Open Policy Framework)
 %{?python_provide:%python_provide python2-%{pypi_name}}
@@ -67,12 +75,12 @@ BuildRequires:  python3-oslo-log
 
 Requires:       python3-babel >= 2.3.4
 Requires:       python3-cliff >= 2.8.0
-Requires:       python3-keystoneauth1 >= 3.1.0
-Requires:       python3-oslo-i18n >= 2.1.0
-Requires:       python3-oslo-log >= 3.22.0
-Requires:       python3-oslo-serialization >= 1.10.0
+Requires:       python3-keystoneauth1 >= 3.3.0
+Requires:       python3-oslo-i18n >= 3.15.3
+Requires:       python3-oslo-log >= 3.36.0
+Requires:       python3-oslo-serialization >= 2.18.0
 Requires:       python3-pbr >= 2.0.0
-Requires:       python3-six >= 1.9.0
+Requires:       python3-six >= 1.10.0
 
 %description -n python3-%{pypi_name}
 %{common_desc}
@@ -95,13 +103,19 @@ Congress API.
 Summary:  congressclient test subpackage
 
 Requires:       python2-%{pypi_name} = %{version}-%{release}
-Requires:       python-fixtures >= 1.3.1
-Requires:       python-mock
+Requires:       python2-fixtures >= 1.3.1
+Requires:       python2-mock
+Requires:       python2-testtools
+Requires:       python2-subunit >= 0.0.18
+%if 0%{?fedora} > 0
+Requires:       python2-testrepository >= 0.0.18
+Requires:       python2-testscenarios >= 0.4
+Requires:       python2-webob >= 1.2.3
+%else
 Requires:       python-testrepository >= 0.0.18
 Requires:       python-testscenarios >= 0.4
-Requires:       python-testtools
-Requires:       python-subunit >= 0.0.18
 Requires:       python-webob >= 1.2.3
+%endif
 
 %description -n python2-%{pypi_name}-tests
 Test suite for OpenStack Congress (Open Policy Framework) client.
