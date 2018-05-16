@@ -91,6 +91,7 @@ Requires:       python3-six >= 1.10.0
 Summary:        Documentation for OpenStack Congress Client
 
 BuildRequires: python-sphinx
+BuildRequires: python-sphinxcontrib-apidoc
 BuildRequires: python-openstackdocstheme
 
 %description -n python-%{pypi_name}-doc
@@ -160,7 +161,7 @@ rm -rf %{pypi_name}.egg-info
 %py2_install
 
 # generate html docs
-%{__python2} setup.py build_sphinx -b html
+sphinx-build -b html doc/source doc/build/html
 # remove the sphinx-build leftovers
 rm -rf doc/build/html/.{doctrees,buildinfo}
 
