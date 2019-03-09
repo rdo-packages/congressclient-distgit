@@ -126,3 +126,4 @@ rm -rf doc/build/html/.{doctrees,buildinfo}
 %{pyver_sitelib}/%{pypi_name}/tests
 
 %changelog
+# REMOVEME: error caused by commit http://git.openstack.org/cgit/openstack/python-congressclient/commit/?id=b689a9863683bacc903962e0d47b6154e6a71912
