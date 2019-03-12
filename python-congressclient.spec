@@ -17,8 +17,8 @@
 Client for OpenStack Congress (Open Policy Framework)
 
 Name:           python-%{pypi_name}
-Version:        XXX
-Release:        XXX
+Version:        1.12.0
+Release:        1%{?dist}
 Summary:        Client for OpenStack Congress (Open Policy Framework)
 
 License:        ASL 2.0
@@ -42,6 +42,7 @@ BuildRequires:  python%{pyver}-keystoneauth1
 BuildRequires:  python%{pyver}-mock
 BuildRequires:  python%{pyver}-oslo-log
 BuildRequires:  python%{pyver}-cliff
+BuildRequires:  python%{pyver}-fixtures
 
 Requires:       python%{pyver}-babel >= 2.3.4
 Requires:       python%{pyver}-keystoneauth1 >= 3.4.0
@@ -126,3 +127,7 @@ rm -rf doc/build/html/.{doctrees,buildinfo}
 %{pyver_sitelib}/%{pypi_name}/tests
 
 %changelog
+* Tue Mar 12 2019 RDO <dev@lists.rdoproject.org> 1.12.0-1
+- Update to 1.12.0
+- Add fixtures as BuildRequries
+
