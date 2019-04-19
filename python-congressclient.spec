@@ -7,7 +7,7 @@
 %{!?upstream_version: %global upstream_version %{version}%{?milestone}}
 
 Name:           python-%{pypi_name}
-Version:        1.8.0
+Version:        1.8.1
 Release:        1%{?dist}
 Summary:        Client for OpenStack Congress (Open Policy Framework)
 
@@ -190,6 +190,9 @@ rm -rf .testrepository
 
 
 %changelog
+* Fri Apr 19 2019 RDO <dev@lists.rdoproject.org> 1.8.1-1
+- Update to 1.8.1
+
 * Mon Aug 14 2017 Alfredo Moralejo <amoralej@redhat.com> 1.8.0-1
 - Update to 1.8.0
 
