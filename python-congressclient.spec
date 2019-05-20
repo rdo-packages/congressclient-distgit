@@ -10,6 +10,7 @@
 %global pyver_build %py%{pyver}_build
 # End of macros for py2/py3 compatibility
 %global pypi_name congressclient
+%global with_doc 1
 
 %{!?upstream_version: %global upstream_version %{version}%{?milestone}}
 
@@ -59,6 +60,7 @@ Summary:        Client for OpenStack Congress (Open Policy Framework)
 %description -n python%{pyver}-%{pypi_name}
 %{common_desc}
 
+%if 0%{?with_doc}
 # Documentation package
 %package -n python%{pyver}-%{pypi_name}-doc
 Summary:        Documentation for OpenStack Congress Client
@@ -71,8 +73,9 @@ BuildRequires: python%{pyver}-openstackdocstheme
 %description -n python%{pyver}-%{pypi_name}-doc
 Documentation for the client library for interacting with Openstack
 Congress API.
+%endif
 
-# Documentation package
+# Tests package
 %package -n python%{pyver}-%{pypi_name}-tests
 
 Summary:  congressclient test subpackage
@@ -103,10 +106,12 @@ rm -rf %{pypi_name}.egg-info
 %install
 %{pyver_install}
 
+%if 0%{?with_doc}
 # generate html docs
 sphinx-build-%{pyver} -b html doc/source doc/build/html
 # remove the sphinx-build-%{pyver} leftovers
 rm -rf doc/build/html/.{doctrees,buildinfo}
+%endif
 
 %check
 %{pyver_bin} setup.py test
@@ -119,9 +124,11 @@ rm -rf doc/build/html/.{doctrees,buildinfo}
 %{pyver_sitelib}/python_%{pypi_name}-*-py?.?.egg-info
 %exclude %{pyver_sitelib}/%{pypi_name}/tests
 
+%if 0%{?with_doc}
 %files -n python%{pyver}-%{pypi_name}-doc
 %doc doc/build/html
 %license LICENSE
+%endif
 
 %files -n python%{pyver}-%{pypi_name}-tests
 %{pyver_sitelib}/%{pypi_name}/tests
