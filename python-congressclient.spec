@@ -18,8 +18,8 @@
 Client for OpenStack Congress (Open Policy Framework)
 
 Name:           python-%{pypi_name}
-Version:        XXX
-Release:        XXX
+Version:        1.13.0
+Release:        1%{?dist}
 Summary:        Client for OpenStack Congress (Open Policy Framework)
 
 License:        ASL 2.0
@@ -134,3 +134,6 @@ rm -rf doc/build/html/.{doctrees,buildinfo}
 %{pyver_sitelib}/%{pypi_name}/tests
 
 %changelog
+* Fri Sep 20 2019 RDO <dev@lists.rdoproject.org> 1.13.0-1
+- Update to 1.13.0
+
