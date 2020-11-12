@@ -17,7 +17,7 @@ Source0:        https://tarballs.openstack.org/%{name}/%{name}-%{version}.tar.gz
 
 BuildArch:      noarch
 
-BuildRequires:  git
+BuildRequires:  git-core
 BuildRequires:  openstack-macros
 
 %description
